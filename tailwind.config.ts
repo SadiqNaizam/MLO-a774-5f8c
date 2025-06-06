@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme'; // Import defaultTheme for font fallbacks
 
 export default {
 	darkMode: ["class"],
@@ -32,6 +33,10 @@ export default {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
+                tertiary: { // Added tertiary color
+                    DEFAULT: 'hsl(var(--tertiary))',
+                    foreground: 'hsl(var(--tertiary-foreground))'
+                },
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -51,23 +56,17 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
+				// Removed sidebar specific colors
 			},
-			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+			borderRadius: { // Uses --radius (6px by default now)
+				lg: 'var(--radius)', // 6px
+				md: 'calc(var(--radius) - 2px)', // 4px
+				sm: 'calc(var(--radius) - 4px)' // 2px
 			},
+            fontFamily: { // Added font family
+              sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+            },
 			keyframes: {
 				'accordion-down': {
 					from: {
